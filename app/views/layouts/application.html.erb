@@ -15,9 +15,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   </head>
 
-  <body class="container <%= "black" if %w(static_pages registrations sessions).include? controller_name.to_s %>">
+  <body class="container <%= "black" if %w(static_pages registrations sessions passwords).include? controller_name.to_s %>">
     <header>
-      <% unless %w(registrations sessions).include? controller_name.to_s %>
+      <% unless %w(registrations sessions passwords).include? controller_name.to_s %>
         <%= render partial: 'layouts/header' %>  
       <% end %>      
     </header>
