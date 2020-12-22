@@ -13,6 +13,9 @@
   </head>
 
   <body class="container <%= "black" if action_name.to_s == "home" %>">
+    <header>
+      <%= render partial: 'layouts/header' %>
+    </header>
     <%= yield %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <% unless flash.empty? %>

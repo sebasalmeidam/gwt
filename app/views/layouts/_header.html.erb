@@ -1,0 +1,17 @@
+<nav class="container navbar fixed-top navbar-toggleable-md navbar-expand-lg navbar-dark <%= 'double-nav' unless action_name.to_s == 'home' %>">
+  <!-- SideNav slide-out button -->
+  <div class="float-left">
+    <a href="#" data-activates="slide-out" class="button-collapse d-lg-none" style=""><i class="fa fa-bars"></i></a>
+    <a id="toggle-side" href="#" class="button-collapse d-none d-lg-block"><i class="fa fa-bars"></i></a>
+  </div>
+  <!-- Breadcrumb-->
+  <a class="navbar-brand" href="/">GWT</a>
+  <ul class="nav navbar-nav nav-flex-icons ml-auto">
+    <li class="nav-item">
+      <a class="nav-link"><i class="fa fa-envelope"></i> <span class="clearfix d-sm-inline-block main-font">Sign Up</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"><i class="fa fa-comments-o"></i> <span class="clearfix d-sm-inline-block">Sign In</span></a>
+    </li>
+  </ul>
+</nav>
