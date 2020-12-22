@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Proposal: Grow with Torre
 
-Things you may want to cover:
+**Integration focused in Educators so they understand and promote the value of torre.co and grow alongside Torre**
 
-* Ruby version
+### Tech:
+* Ruby 2.6.6
+* Rails 6.1.0
+* Mysql
+* ReactJS
 
-* System dependencies
+### Pending:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Ideas to keep growing:
