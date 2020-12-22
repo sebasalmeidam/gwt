@@ -1,0 +1,1 @@
+//= require mdb/js/jquery-3.4.1.min
