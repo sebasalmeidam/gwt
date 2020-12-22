@@ -11,5 +11,8 @@
 * ReactJS
 
 ### Pending:
+* Create model for extra information about users
+* Translations
+* remove tostr when sign in/out
 
 ### Ideas to keep growing:

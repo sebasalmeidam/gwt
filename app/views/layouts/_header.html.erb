@@ -5,13 +5,34 @@
     <a id="toggle-side" href="#" class="button-collapse d-none d-lg-block"><i class="fa fa-bars"></i></a>
   </div>
   <!-- Breadcrumb-->
-  <a class="navbar-brand" href="/">GWT</a>
+  <a class="navbar-brand" href="/">GWTorre</a>
   <ul class="nav navbar-nav nav-flex-icons ml-auto">
-    <li class="nav-item">
-      <a class="nav-link"><i class="fa fa-envelope"></i> <span class="clearfix d-sm-inline-block main-font">Sign Up</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link"><i class="fa fa-comments-o"></i> <span class="clearfix d-sm-inline-block">Sign In</span></a>
-    </li>
+    <% if current_user.present? %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <%= current_user.full_name %>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-danger" aria-labelledby="navbarDropdownMenuLink">
+          <%= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
+            <i class="fa fa-envelope"></i> <span class="clearfix d-sm-inline-block">Sign Out</span></a>
+          <% end %>      
+        </div>
+      </li>
+        
+        
+    <% else %>
+      <li class="nav-item">
+        <%= link_to new_user_registration_path, class: 'nav-link' do %>
+          <i class="fa fa-envelope"></i> <span class="clearfix d-sm-inline-block main-font">Sign Up</span></a>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to new_user_session_path, class: 'nav-link' do %>
+          <i class="fa fa-comments-o"></i> <span class="clearfix d-sm-inline-block">Sign In</span>
+        <% end %>
+      </li>
+    <% end %>
+    
   </ul>
 </nav>

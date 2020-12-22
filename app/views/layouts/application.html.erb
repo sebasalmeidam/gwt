@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gwt</title>
+    <title>GWTorre</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,11 +10,16 @@
     <%= javascript_include_tag 'loadjq', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   </head>
 
-  <body class="container <%= "black" if action_name.to_s == "home" %>">
+  <body class="container <%= "black" if %w(static_pages registrations sessions).include? controller_name.to_s %>">
     <header>
-      <%= render partial: 'layouts/header' %>
+      <% unless %w(registrations sessions).include? controller_name.to_s %>
+        <%= render partial: 'layouts/header' %>  
+      <% end %>      
     </header>
     <%= yield %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

@@ -23,3 +23,14 @@
  .main-bg {
    background-color: #cddc39 !important;
  }
+
+ .dark-input{
+   color: #afb8c1;
+   background: #27292D;
+   border: 1px solid #27292D;
+ }
+
+.dark.form-check-input[type="checkbox"]:checked + label:before, label.btn input[type="checkbox"]:checked + label:before {
+  border-right: 2px solid #cddc39;
+  border-bottom: 2px solid #cddc39;
+}

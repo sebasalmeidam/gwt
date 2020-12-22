@@ -1,0 +1,76 @@
+<section class="mt-5 py-3" >
+  <div class="container">
+    <div class="row">
+      <div class="col-12 offset-md-3 col-md-6">
+        <h1 class="h1-responsive main-font font-weight-bold text-center">
+          <%= t('.sign_up') %>
+        </h1>
+        <div class="card black text-white py-2">
+          <div class="card-body">
+            <div class="text-center mb-4">
+              <!-- logo -->
+              <%= link_to root_path, class: 'main-font' do %>
+                GWTorre
+              <% end %>
+            </div>
+
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'nomargin') do |f| %>
+              <%= render "devise/shared/error_messages" , resource: resource %>
+              <div class="clearfix">
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <%= f.text_field :first_name, autocomplete: "first_name" , class: 'form-control dark-input' ,
+                        placeholder: 'First Name' %>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <%= f.text_field :last_name, autocomplete: "first_name" , class: 'form-control dark-input' ,
+                        placeholder: 'Last Name' %>
+                    </div>
+                  </div>
+                </div>
+                
+                
+                <div class="form-group">
+                    <%= f.email_field :email, autocomplete: "email", class: 'form-control dark-input', placeholder: 'Email' %>
+                </div>
+            
+                <div class="form-group">
+                  <% if @minimum_password_length %>
+                    <em class="grey-text">
+                      <%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %>
+                    </em> <br />
+                  <% end %>
+                  <%= f.password_field :password, autocomplete: "new-password", class: 'form-control dark-input', placeholder: 'Password', required: '' %>
+                </div>
+            
+                <div class="form-group">
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control dark-input', placeholder: 'Password Confirmation', required: '' %>
+                </div>
+            
+                <div class="row">
+                  <div class="col-12 col-md-12 my-3">
+                    <span class="waves-input-wrapper waves-effect waves-light" style=" display: block; ">
+                      <%= f.submit t('.sign_up'), class: 'btn btn-block btn-yellow main-bg' %>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+              <div class="row">
+                <div class="col-12 text-center">
+                  <%= render "devise/shared/links" %>
+                </div>
+              </div>              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

@@ -1,0 +1,53 @@
+<section class="mt-5 py-3" >
+  <div class="container">
+    <div class="row">
+      <div class="col-12 offset-md-3 col-md-6 offset-lg-4 col-lg-4">
+        <h1 class="h1-responsive main-font font-weight-bold text-center">
+          <%= t('.sign_in') %>
+        </h1>
+
+        <div class="card black text-white py-2">
+          <div class="card-body">
+            <div class="text-center mb-4">
+              <!-- logo -->
+              <%= link_to root_path, class: 'main-font' do %>
+                GWTorre
+              <% end %>
+            </div>
+
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: 'nomargin') do |f| %>
+              <div class="clearfix">
+                <div class="form-group">
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: 'form-control dark-input' %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Password', class: 'form-control dark-input' %>
+                </div>
+
+                <div class="row">
+                  <div class="col-12 col-lg-6">
+                    <% if devise_mapping.rememberable? %>
+                      <div class="form-group mb-1">
+                        <%= f.check_box :remember_me, class: 'form-check-input dark' %>
+                        <%= f.label :remember_me, class:'small' %>
+                      </div>
+                    <% end %>                  
+                  </div>
+                  <div class="col-12 text-center col-lg-6 text-lg-right small">
+                    <%= render "devise/shared/links" %>
+                  </div>
+
+                </div>
+
+
+                <div class="row mt-3">
+                  <div class="col-12 col-md-12">
+                    <span class="waves-input-wrapper waves-effect waves-light" style=" display: block; ">
+                      <%= f.submit t('.sign_in'), class: 'btn btn-yellow btn-block btn-rounded' %>  
+                    </span>                    
+                  </div>
+                </div>
+              <% end %>
+
+              
