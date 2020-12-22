@@ -6,6 +6,18 @@ let reducer = (state, action) => {
       return { ...state, continue: false };
     case "continueTrue":
       return { ...state, continue: true };
+    case "updateOrganization":
+      return { ...state, organization: action.payload };
+    case "updateOrganizationsQuery":
+      return { ...state, organizations: action.payload };
+    case "loadingTrue":
+      return { ...state, loading: true };
+    case "loadingFalse":
+      return { ...state, loading: false };
+    case "showResults":
+      return { ...state, showResults: true };
+    case "hideResults":
+      return { ...state, showResults: false };
     default:
       return;
   }
@@ -13,6 +25,10 @@ let reducer = (state, action) => {
 
 const initialState = {
   continue: false,
+  organization: '',
+  organizations: [],
+  loading: false,
+  showResults: false
 }
 
 const MainContext = React.createContext(initialState);
