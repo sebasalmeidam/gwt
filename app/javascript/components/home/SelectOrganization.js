@@ -41,12 +41,12 @@ export default function SelectOrganization() {
   return (
     <div className="row">
       <div className="col-12 text-center mb-2">1. Select your Organization</div>
-      <div className="col-12 col-md-8 offset-md-2  px-0">
+      <div className="col-12 col-md-8 offset-md-2 px-0">
         <input onChange={(e) => setOrganization(e) } type="text" className="form-control" placeholder="Type your Organization name (Min 3 chars)" autoFocus />
       </div>
       {state.loading && 
-        <div className="col-12">
-          <Loader size="50px" />
+        <div className="col-12 col-md-8 offset-md-2  px-0">
+          <Loader size="200px" />
         </div>
       }
       {state.showResults &&

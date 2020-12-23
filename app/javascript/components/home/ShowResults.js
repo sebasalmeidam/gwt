@@ -6,16 +6,19 @@ export default function ShowResults ({organizations}){
   const completeSignUp = (org) => {
     swal({
       title: "Complete Sign Up!",
-      text: `An obtain insights from ${org} and job status from current members and alumni!`,
+      text: `And obtain insights from ${org} and job status from current members and alumni!`,
       icon: "success",
+      closeOnClickOutside: true,
       button: {
         text: "Continue",
         className: 'btn-success'
       }
     
-    }).then(() => {
-      window.location.href = `/users/sign_up?organization=${org}`
-    } )
+    }).then((value) => {
+      if (value) {
+        window.location.href = `/users/sign_up?organization=${org}`        
+      }
+    })
   }
   
   if (organizations.length == 0) {

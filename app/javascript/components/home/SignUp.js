@@ -14,7 +14,7 @@ export default function SignUp() {
     if (state.continue) {
       return <SelectOrganization />
     } else {
-      return <button onClick={continueSignup} className="btn btn-yellow btn-rounded">Get Insights about your students and alumni</button>
+      return <button onClick={continueSignup} className="btn btn-rounded main-bg dark-font">Get Insights about your students and alumni</button>
     }
   }
   

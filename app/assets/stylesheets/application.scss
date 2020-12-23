@@ -16,12 +16,32 @@
 
  @import 'mdb/vendor_mdb';
 
+body{
+  font-family: 'Mulish';
+}
+
  .main-font {
    color: #cddc39 !important
  }
 
  .main-bg {
    background-color: #cddc39 !important;
+ }
+
+ .dark-bg {
+   background-color: #27292d !important;
+ }
+
+ .darker-font {
+   color: hsla(0,0%,100%,.65) !important;
+ }
+
+ .dark-font {
+   color: rgba(0, 0, 0, 0.87) !important;
+ }
+
+ .lighter-font {
+   color: hsla(0,0%,100%,.9) !important;
  }
 
  .dark-input{
