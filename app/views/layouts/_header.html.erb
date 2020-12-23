@@ -1,4 +1,4 @@
-<nav class="py-3 navbar fixed-top navbar-toggleable-md navbar-expand-lg navbar-dark <%= 'double-nav' unless action_name.to_s == 'home' %> dark-bg">
+<nav class="py-3 navbar fixed-top navbar-toggleable-md navbar-expand-lg navbar-dark double-nav dark-bg lighter-font">
   <div class="container">
     <a class="navbar-brand" href="/" style="font-weight: 400;">GWTorre</a>
 
@@ -8,11 +8,18 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="nav navbar-nav nav-flex-icons ml-auto">
+      <ul class="nav navbar-nav ml-auto text-center text-lg-right">
         <% if current_user.present? %>
+          <li class="nav-item align-self-center main-font mr-lg-3">
+            <%= link_to dashboard_path, class: 'nav-link' do %>
+              <i class="fas fa-tachometer-alt"></i> <span class="clearfix d-sm-inline-block main-font">Dashboard</span>
+            <% end %>
+            
+            
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
+              aria-haspopup="true" aria-expanded="false" style="font-size: 1rem">
               <%= current_user.full_name %>
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-danger" aria-labelledby="navbarDropdownMenuLink">
@@ -21,8 +28,6 @@
               <% end %>      
             </div>
           </li>
-            
-            
         <% else %>
           <!-- <li class="nav-item">
             <%# link_to new_user_registration_path, class: 'nav-link' do %>

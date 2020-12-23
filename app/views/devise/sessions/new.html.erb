@@ -6,8 +6,13 @@
           <%= t('.sign_in') %>
         </h1>
 
-        <div class="card black text-white py-2">
+        <div class="card black text-white py-2 rounded">
           <div class="card-body">
+            <div class="row my-3">
+              <div class="col-12 text-center">
+                <img src="https://res.cloudinary.com/torre-technologies-co/image/upload/v1601512321/origin/bio/organizations/Torre_logo_small_uubm3e.png" alt="torre logo">
+              </div>
+            </div>
             <div class="text-center mb-4">
               <!-- logo -->
               <%= link_to root_path, class: 'main-font' do %>
@@ -44,10 +49,18 @@
                 <div class="row mt-3">
                   <div class="col-12 col-md-12">
                     <span class="waves-input-wrapper waves-effect waves-light" style=" display: block; ">
-                      <%= f.submit t('.sign_in'), class: 'btn btn-yellow btn-block btn-rounded' %>  
+                      <%= f.submit t('.sign_in'), class: 'btn main-bg dark-font btn-block btn-rounded' %>  
                     </span>                    
                   </div>
                 </div>
-              <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
 
               

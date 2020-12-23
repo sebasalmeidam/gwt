@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>GWTorre</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -31,22 +31,25 @@
 		</script>
   </head>
 
-  <body class="container <%= "black" if %w(static_pages registrations sessions passwords).include? controller_name.to_s %>">
+  <body class="container dark-bg">
     <header>
       <% unless %w(registrations sessions passwords).include? controller_name.to_s %>
         <%= render partial: 'layouts/header' %>  
       <% end %>      
     </header>
-    <%= yield %>
+    <main id="content" class="content">
+      <%= yield %>
+    </main>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <% unless flash.empty? %>
       <script type="text/javascript">
         <% flash.to_a.each do |f| %>
-          console.log("<%= f %>");
           <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info').gsub("recaptcha_", "") %>
           <% messages = f[1].is_a?(Array) ? f[1] : [f[1]] %>
           <% messages.to_a.each do |msg|  %>
-            toastr['<%= type %>']('<%= msg  %>', '', {"closeButton": true, "debug": false, "onclick": null, "showDuration": "300", "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut" });
+            <% unless ["Signed in successfully.", "Signed out successfully."].include? msg  %>   
+              toastr['<%= type %>']('<%= msg  %>', '', {"closeButton": true, "debug": false, "onclick": null, "showDuration": "300", "hideDuration": "1000", "timeOut": "5000", "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear", "showMethod": "fadeIn", "hideMethod": "fadeOut" });
+            <%end%>
           <%end%>
         <% end %>
       </script>
