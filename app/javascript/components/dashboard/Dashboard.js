@@ -3,6 +3,7 @@ import { DashboardContext } from '../context/DashboardContext'
 import Panels4lg from './Panels4lg'
 import TotalUsers from './TotalUsers'
 import Remoters from './Remoters'
+import HourlyRates from './HourlyRates';
 
 export default function Dashboard() {
   const { state, dispatch } = useContext(DashboardContext)
@@ -56,6 +57,11 @@ export default function Dashboard() {
       <Panels4lg
         title={"Remoters"}
         stat={<Remoters />}
+      />
+
+      <Panels4lg
+        title={"Hourly Rates"}
+        stat={<HourlyRates />}
       />
 
       <div className="col-12 col-md-6 col-lg-4">
