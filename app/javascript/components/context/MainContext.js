@@ -34,6 +34,7 @@ const initialState = {
 const MainContext = React.createContext(initialState);
 
 function StateProvider(props) {
+  const [state, dispatch] = useReducer(reducer, initialState);
   
   return (
     <MainContext.Provider value={{ state, dispatch }}>
