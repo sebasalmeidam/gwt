@@ -23,7 +23,7 @@ export default function ShowResults ({organizations}){
   
   if (organizations.length == 0) {
     return (
-      <div style={{minHeight: '30px'}}>
+      <div className="col-12 col-md-8 offset-md-2 mt-2" style={{minHeight: '30px'}}>
         Organization not found, please try completing the word/name or talk to <a href="https://torre.co">torre.co</a> to add the Organization
       </div>
     )

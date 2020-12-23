@@ -5,6 +5,11 @@ class Devise::RegistrationsController < DeviseController
 
   # GET /resource/sign_up
   def new
+    p session[:organization]
+    if params[:organization] == nil || session[:organization] == ''
+      flash[:warning] = 'Please select an organization to continue, click de Get Insights button.'
+      redirect_to root_path and return 
+    end
     build_resource
     yield resource if block_given?
     respond_with resource
