@@ -6,7 +6,7 @@ class Devise::RegistrationsController < DeviseController
   # GET /resource/sign_up
   def new
     p session[:organization]
-    if params[:organization] == nil || session[:organization] == ''
+    if params[:organization] == nil && session[:organization] == nil
       flash[:warning] = 'Please select an organization to continue, click de Get Insights button.'
       redirect_to root_path and return 
     end
