@@ -18,8 +18,20 @@
               <%= render "devise/shared/error_messages" , resource: resource %>
               <div class="clearfix">
                 <div class="row">
+                  <div class="col-12 mb-3 text-left">
+                    <% if params[:organization]
+                      @organization = params[:organization]
+                    else
+                      @organization = session[:organization]
+                    end %>
+                    <b>Subscription to: </b> <%= @organization %> <br>
+                    <%= link_to 'Change Company', root_path, class: 'small' %>
+                  </div>
+                </div>
+                <div class="row">
                   <div class="col-12 col-md-6">
                     <div class="form-group">
+                      <%= f.hidden_field :organization_name, value: @organization %>
                       <%= f.text_field :first_name, autocomplete: "first_name" , class: 'form-control dark-input' ,
                         placeholder: 'First Name' %>
                     </div>

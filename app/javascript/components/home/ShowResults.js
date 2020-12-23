@@ -1,6 +1,22 @@
 import React from 'react';
+import swal from 'sweetalert';
 
 export default function ShowResults ({organizations}){
+  
+  const completeSignUp = (org) => {
+    swal({
+      title: "Complete Sign Up!",
+      text: `An obtain insights from ${org} and job status from current members and alumni!`,
+      icon: "success",
+      button: {
+        text: "Continue",
+        className: 'btn-success'
+      }
+    
+    }).then(() => {
+      window.location.href = `/users/sign_up?organization=${org}`
+    } )
+  }
   
   if (organizations.length == 0) {
     return (
@@ -14,7 +30,7 @@ export default function ShowResults ({organizations}){
       <div className="col-12 col-md-8 offset-md-2 grey darken-2 rounded px-0" style={{maxHeight: "200px", overflow: 'auto'}}>
         {organizations.map(organization => {
           return(
-            <button key={organization.id} className="text-left btn btn-block mx-0">{organization.name}</button>
+            <button key={organization.id} onClick={() => completeSignUp(organization.name)} className="text-left btn btn-block mx-0">{organization.name}</button>
           )
         })}
       </div>

@@ -23,14 +23,14 @@
           
           
       <% else %>
-        <li class="nav-item">
-          <%= link_to new_user_registration_path, class: 'nav-link' do %>
+        <!-- <li class="nav-item">
+          <%# link_to new_user_registration_path, class: 'nav-link' do %>
             <i class="fa fa-user"></i> <span class="clearfix d-sm-inline-block main-font">Sign Up</span></a>
-          <% end %>
-        </li>
+          <%# end %>
+        </li> -->
         <li class="nav-item">
           <%= link_to new_user_session_path, class: 'nav-link' do %>
-            <i class="fa fa-comments-o"></i> <span class="clearfix d-sm-inline-block">Sign In</span>
+            <i class="fa fa-user"></i> <span class="clearfix d-sm-inline-block main-font">Sign In</span>
           <% end %>
         </li>
       <% end %>
