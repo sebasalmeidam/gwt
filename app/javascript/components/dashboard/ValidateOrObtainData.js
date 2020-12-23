@@ -1,17 +1,12 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { DashboardContext } from '../context/DashboardContext'
-import Panels4lg from './Panels4lg'
-import TotalUsers from './TotalUsers'
-import Remoters from './Remoters'
-import HourlyRates from './HourlyRates';
-import ValidateOrObtainData from './ValidateOrObtainData';
+import Loader from '../support/Loader'
 
-export default function Dashboard() {
-  const { state, dispatch } = useContext(DashboardContext)
-
-  const getUsersStats = () => {
+export default function ValidateOrObtainData() {
+  
+  /* const getData = () => {
     let data = { organization: { term: state.userOrganization } }
-    fetch(`https://search.torre.co/people/_search/?aggregate=true&offset=0&size=0`, {
+    fetch(`/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -25,7 +20,7 @@ export default function Dashboard() {
           dispatch({ type: 'usersCount', payload: result.total })
           if (result.aggregators.remoter.length > 0) {
             result.aggregators.remoter.map(res => {
-              if(res.value == 'yes') {
+              if (res.value == 'yes') {
                 dispatch({ type: 'usersRemote', payload: res.total })
               } else if (res.value == 'no') {
                 dispatch({ type: 'usersRemoteNo', payload: res.total })
@@ -46,26 +41,13 @@ export default function Dashboard() {
     if (state.userOrganization != "") {
       getUsersStats()
     }
-  }, [state.userOrganization])
+  }, [state.userOrganization]) */
   
   return (
-    <div className="row mt-3">
-      <Panels4lg
-      title={"Users in Torre"}
-      stat={<TotalUsers />}
-       />
-      
-      <Panels4lg
-        title={"Remoters"}
-        stat={<Remoters />}
-      />
-
-      <Panels4lg
-        title={"Hourly Rates"}
-        stat={<HourlyRates />}
-      />
-
-      <ValidateOrObtainData />
+    <div className="col-12 text-center">
+      We are loading more insights, please wait
     </div>
   )
-} 
+}
+
+      
