@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 
 let reducer = (state, action) => {
   switch (action.type) {
@@ -28,13 +28,13 @@ const initialState = {
   organization: '',
   organizations: [],
   loading: false,
-  showResults: false
+  showResults: false,
 }
 
 const MainContext = React.createContext(initialState);
 
 function StateProvider(props) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  
   return (
     <MainContext.Provider value={{ state, dispatch }}>
       {props.children}

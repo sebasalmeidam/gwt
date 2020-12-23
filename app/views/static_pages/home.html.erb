@@ -16,7 +16,16 @@
   </section>
 
   <section>
-    <%= react_component("HomeContainer") %>
+    <% if current_user.present? %>
+      <div class="row">
+        <div class="col-12 text-center">
+          <%= link_to 'Return to Dashboard', dashboard_path, class:"btn btn-rounded main-bg dark-font" %>      
+        </div>
+      </div>
+    <% else %>
+      <%= react_component("HomeContainer") %>
+    <% end %>
+    
   </section>
   <!-- if time allows gcaptcha v3 to replace first step to be clicking a button -->
 </div>
