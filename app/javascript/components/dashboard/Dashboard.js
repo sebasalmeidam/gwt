@@ -22,11 +22,17 @@ export default function Dashboard() {
           dispatch({ type: 'loadingFalse' })
           dispatch({ type: 'usersCount', payload: result.total })
           if (result.aggregators.remoter.length > 0) {
-            dispatch({ type: 'usersRemote', payload: result.aggregators.remoter[0] })
-            dispatch({ type: 'usersRemoteNo', payload: result.aggregators.remoter[1] })
+            result.aggregators.remoter.map(res => {
+              if(res.value == 'yes') {
+                dispatch({ type: 'usersRemote', payload: res.total })
+              } else if (res.value == 'no') {
+                dispatch({ type: 'usersRemoteNo', payload: res.total })
+              }
+            })
           }
-          dispatch({ type: 'usersRates', payload: result.aggregators.compensationrange })
-
+          if (result.aggregators.compensationrange.length > 0) {
+            dispatch({ type: 'usersRates', payload: result.aggregators.compensationrange })
+          }
         },
         (error) => {
           console.log(error)

@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 import { DashboardContext } from '../context/DashboardContext'
 import Loader from '../support/Loader'
 import {
-  BarChart, Bar, ResponsiveContainer, LabelList, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  BarChart, Bar, ResponsiveContainer, XAxis, YAxis, Tooltip
 } from 'recharts';
 
 export default function Remoters() {
   const { state, dispatch } = useContext(DashboardContext)
   
-  const data = [{ name: 'Yes', Total: state.remoteYes.total }, {name: 'No', Total: state.remoteNo.total}];
+  const data = [{ name: 'Yes', Total: state.remoteYes }, {name: 'No', Total: state.remoteNo}];
   
   const manageLoad = () => {
     if (state.loading) {
@@ -22,6 +22,7 @@ export default function Remoters() {
                 <BarChart data={data} margin={{ top: 20, right: 10, left: -20, bottom: 10}}>
                   <XAxis dataKey="name" stroke="#ffffff" allowDataOverflow={true} label={{fontSize: '8px'}} />
                   <YAxis label={{ fontSize: '8' }} />
+                  <Tooltip offset={50} contentStyle={{backgroundColor: 'black'}} />
                   <Bar dataKey="Total" fill="#cddc39" barSize={40} />
                 </BarChart>
               </ResponsiveContainer>
