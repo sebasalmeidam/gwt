@@ -1,6 +1,7 @@
 import React from 'react';
 import { ApolloProvider, ApolloLink, ApolloClient, HttpLink, InMemoryCache, useReactiveVar } from '@apollo/client';
 import IsWorking from '../inisghts/IsWorking'
+import CompaniesWorked from '../inisghts/CompaniesWorked'
 import Panels4lg from './Panels4lg';
 
 const httpLink = new HttpLink({ uri: '/graphql' });
@@ -32,7 +33,13 @@ export default function Insights(){
           stat={<IsWorking />}
           />
         </div>
-        <div className="col-12 col-md-6">Companies have worked in</div>
+        <div className="col-12 col-md-6">
+          <Panels4lg
+            title={"Companies"}
+            size={6}
+            stat={<CompaniesWorked />}
+          />
+        </div>
       </div>
 
       <div className="row">
