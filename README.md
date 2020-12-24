@@ -4,6 +4,10 @@
 
 **Integration focused in Educators so they understand and promote the value of torre.co and grow alongside Torre**
 
+### Progress log:
+* https://wwww.progress-log.com
+* Github: https://github.com/sebasalmeidam/plog
+
 ### Tech:
 * Ruby 2.6.6
 * Rails 6.1.0
