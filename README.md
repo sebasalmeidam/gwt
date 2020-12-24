@@ -5,7 +5,7 @@
 **Integration focused in Educators so they understand and promote the value of torre.co and grow alongside Torre**
 
 ### Progress log:
-* https://wwww.progress-log.com
+* progress-log.com
 * Github: https://github.com/sebasalmeidam/plog
 
 ### Tech:
@@ -15,7 +15,7 @@
 * ReactJS
 
 ### Pending:
-* Create model for extra information about users
+* Create model for extra information about users (education)
 * Translations
 * ADMIN section, to CRUD users
 * framework implementation to hablde background jobs
