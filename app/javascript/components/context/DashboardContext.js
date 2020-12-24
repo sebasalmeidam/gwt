@@ -20,6 +20,8 @@ let reducer = (state, action) => {
       return { ...state, remoteNo: action.payload }
     case 'usersRates':
       return { ...state, rates: action.payload }
+    case 'getUsersID':
+      return { ...state, usersId: [...state.usersId, action.payload] }
     default:
       return;
   }
@@ -32,7 +34,8 @@ const initialState = {
   usersCount: 0,
   remoteYes: 0,
   remoteNo: 0,
-  rates: []
+  rates: [],
+  usersId: []
 }
 
 const DashboardContext = React.createContext(initialState);

@@ -11,7 +11,7 @@ export default function Dashboard() {
 
   const getUsersStats = () => {
     let data = { organization: { term: state.userOrganization } }
-    fetch(`https://search.torre.co/people/_search/?aggregate=true&offset=0&size=0`, {
+    fetch(`https://search.torre.co/people/_search/?aggregate=true&offset=0&size=999`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -34,6 +34,12 @@ export default function Dashboard() {
           }
           if (result.aggregators.compensationrange.length > 0) {
             dispatch({ type: 'usersRates', payload: result.aggregators.compensationrange })
+          }
+          if (result.results.length > 0) {
+            result.results.map(user => {
+              console.log(user.username);
+              dispatch({ type: 'getUsersID', payload: user.username })
+            })
           }
         },
         (error) => {

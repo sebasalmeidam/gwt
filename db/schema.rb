@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_22_141237) do
+ActiveRecord::Schema.define(version: 2020_12_23_230900) do
+
+  create_table "students", charset: "latin1", force: :cascade do |t|
+    t.string "torre_username", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", charset: "latin1", force: :cascade do |t|
     t.boolean "admin", default: false, null: false

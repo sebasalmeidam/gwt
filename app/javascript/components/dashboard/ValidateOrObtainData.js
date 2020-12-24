@@ -1,35 +1,24 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { DashboardContext } from '../context/DashboardContext'
 import Loader from '../support/Loader'
 
 export default function ValidateOrObtainData() {
-  
-  /* const getData = () => {
-    let data = { organization: { term: state.userOrganization } }
-    fetch(`/`, {
+  const { state, dispatch } = useContext(DashboardContext)
+
+  const validateUserData = () => {
+    let data = { users: state.usersId }
+    fetch(`/validate_students`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').getAttribute('content'),
       },
       body: JSON.stringify(data)
     })
       .then(res => res.json())
       .then(
         (result) => {
-          dispatch({ type: 'loadingFalse' })
-          dispatch({ type: 'usersCount', payload: result.total })
-          if (result.aggregators.remoter.length > 0) {
-            result.aggregators.remoter.map(res => {
-              if (res.value == 'yes') {
-                dispatch({ type: 'usersRemote', payload: res.total })
-              } else if (res.value == 'no') {
-                dispatch({ type: 'usersRemoteNo', payload: res.total })
-              }
-            })
-          }
-          if (result.aggregators.compensationrange.length > 0) {
-            dispatch({ type: 'usersRates', payload: result.aggregators.compensationrange })
-          }
+          console.log(result)          
         },
         (error) => {
           console.log(error)
@@ -38,10 +27,10 @@ export default function ValidateOrObtainData() {
   }
 
   useEffect(() => {
-    if (state.userOrganization != "") {
-      getUsersStats()
+    if (state.usersId.length > 0) {
+      validateUserData()
     }
-  }, [state.userOrganization]) */
+  }, [state.usersId])
   
   return (
     <div className="col-12 text-center">
