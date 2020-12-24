@@ -18,7 +18,6 @@ export default function ValidateOrObtainData() {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log('what')
           dispatch({ type: 'queryFalse' })          
           if (result.message == "Processing") {
             dispatch({ type: 'backLoad'})
