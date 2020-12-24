@@ -1,5 +1,7 @@
 class Student < ApplicationRecord
 
+  has_many :professionals
+
   def self.get_genome(usernames)
     p 'starting'
     usernames.each do |username|

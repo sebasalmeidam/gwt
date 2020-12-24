@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_23_230900) do
+ActiveRecord::Schema.define(version: 2020_12_24_035420) do
+
+  create_table "organizations", charset: "latin1", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "organizations_professionals", id: false, charset: "latin1", force: :cascade do |t|
+    t.bigint "organization_id", null: false
+    t.bigint "professional_id", null: false
+  end
+
+  create_table "professionals", charset: "latin1", force: :cascade do |t|
+    t.string "title"
+    t.string "start_month"
+    t.string "start_year"
+    t.string "end_month"
+    t.string "end_year"
+    t.bigint "student_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_professionals_on_student_id"
+  end
 
   create_table "students", charset: "latin1", force: :cascade do |t|
     t.string "torre_username", default: "", null: false
@@ -37,4 +60,5 @@ ActiveRecord::Schema.define(version: 2020_12_23_230900) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "professionals", "students"
 end
