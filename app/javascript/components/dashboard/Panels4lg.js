@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function Panels4lg({title, stat}) {
+export default function Panels4lg({title, stat, size=4}) {
   return (
-    <div className="mb-3 col-12 col-md-6 col-lg-4">
+    <div className={`${size == 4 ? "mb-3 col-12 col-md-6 col-lg-4" : ""}`} >
       <div className="card black dash-card rounded">
         <div className="card-body">
           <div className="card-title">

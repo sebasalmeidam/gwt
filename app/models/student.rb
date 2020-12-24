@@ -1,6 +1,7 @@
 class Student < ApplicationRecord
 
   has_many :professionals, dependent: :destroy
+  has_many :organizations, through: :professionals 
 
   def self.get_genome(usernames)
     p 'starting'
@@ -43,10 +44,8 @@ class Student < ApplicationRecord
           end
           studies = res["education"]
           p 'next'
-          return true
         else
           p 'error with response'
-          return false
         end
       rescue
         p 'failed'

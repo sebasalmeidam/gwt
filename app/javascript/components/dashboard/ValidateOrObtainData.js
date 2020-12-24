@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { DashboardContext } from '../context/DashboardContext'
-import Loader from '../support/Loader'
+import Insights from './Insights'
 
 export default function ValidateOrObtainData() {
   const { state, dispatch } = useContext(DashboardContext)
@@ -51,7 +51,7 @@ export default function ValidateOrObtainData() {
 
   return (
     <div className="col-12 text-center">
-      let the insights begin
+      <Insights />
     </div>
   )
   

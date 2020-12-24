@@ -10,6 +10,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 Rails.application.config.assets.precompile += %w( loadjq.js application.js mdb.scss mdb.js mdb/*)
 
+Rails.application.config.assets.precompile += %w( graphiql/rails/application.js graphiql/rails/application.css ) if Rails.env.development?
+
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.

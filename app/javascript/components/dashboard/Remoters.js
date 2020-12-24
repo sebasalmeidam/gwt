@@ -14,7 +14,7 @@ export default function Remoters() {
     return <Loader size={"15px"} />
   } else {
     return (
-      <div className="row mt10">
+      <div className="row">
         <div className="col-12 text-center">
           <div style={{ width: '100%', height: 130 }}>
             <ResponsiveContainer width="100%" height="100%" >
