@@ -53,6 +53,7 @@ class Student < ApplicationRecord
         next
       end
     end
+    p 'end'
   end
 
 end
