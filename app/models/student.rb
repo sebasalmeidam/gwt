@@ -34,12 +34,11 @@ class Student < ApplicationRecord
               end_m = job["toMonth"] ? job["toMonth"] : ''
               end_y = job["toYear"] ? job["toYear"] : ''
               p 'before save'
-              experience = student.professionals.build(title: job_name, start_month: start_m, start_year: start_y, end_month: end_m, end_year: end_y)
-              experience.save
+              experience = Professional.find_or_create_by(title: job_name, start_month: start_m, start_year: start_y, end_month: end_m, end_year: end_y, student_id: student.id)
               p 'after save'
               job_organizations = job['organizations'].map{|org| org['name']}
               p job_organizations
-              job_organizations.each{|org| business = Organization.find_or_create_by(name: org); experience.organizations << business}
+              job_organizations.each{|org| business = Organization.find_or_create_by(name: org); OrganizationsProfessional.find_or_create_by(professional_id: experience.id , organization_id: business.id )}
             end
           end
           studies = res["education"]
