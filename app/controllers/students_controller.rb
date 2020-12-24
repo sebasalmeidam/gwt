@@ -7,6 +7,7 @@ class StudentsController < ApplicationController
     if !@current_students.empty?
       @current_students.update_all(organization: params[:organization])
     end
+    @new_update = @current_students.where(name: "")
     
     @current_students = @current_students.map(&:torre_username)
     @students = @users - @current_students
@@ -17,7 +18,12 @@ class StudentsController < ApplicationController
       system "rake get_users_genome USERNAMES=#{@students.join(',')} &"
       render json: {status: 200, message: 'Processing'} and return
     end
+
     
+    unless @new_update.empty?
+      system "rake get_users_genome USERNAMES=#{@new_update.map(&:torre_username).join(',')} &"
+      render json: {status: 200, message: 'Processing'} and return
+    end
     render json: {status: 200, message: 'Updated'} and return
   end
 end
