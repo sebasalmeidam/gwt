@@ -12,6 +12,18 @@ module Types
       Student.includes(professionals: :organizations)
     end
 
+    field :studentList, StudentType.connection_type, null: false do
+      description 'Student connection type'
+      argument :organization, String, required: false
+    end
+    
+    def studentList(organization:)
+      if organization.present?
+        return Student.where(organization: organization)
+      end
+      Student.all
+    end
+
     field :is_working, Integer, null: false do
       description "Count of students that don't have end dates in jobs"
       argument :organization, String, required: false

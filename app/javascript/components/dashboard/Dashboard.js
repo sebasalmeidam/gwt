@@ -5,6 +5,7 @@ import TotalUsers from './TotalUsers'
 import Remoters from './Remoters'
 import HourlyRates from './HourlyRates';
 import ValidateOrObtainData from './ValidateOrObtainData';
+import swal from 'sweetalert';
 
 export default function Dashboard() {
   const { state, dispatch } = useContext(DashboardContext)
@@ -52,25 +53,51 @@ export default function Dashboard() {
       getUsersStats()
     }
   }, [state.userOrganization])
+
+  const changeOrganization = () => {
+    swal({
+      title: "We can help you!",
+      text: `Contact us, we can show your students and alumni job situation and send more insights of the labor market and your competitors`,
+      icon: "success",
+      closeOnClickOutside: true,
+      button: {
+        text: "Continue",
+        className: 'btn-success'
+      }
+
+    }).then((value) => {
+      if (value) {
+        window.open(`https://torre.co`, '_blank')
+      }
+    })
+  }
   
   return (
-    <div className="row mt-3">
-      <Panels4lg
-      title={"Users in Torre"}
-      stat={<TotalUsers />}
-       />
-      
-      <Panels4lg
-        title={"Remoters"}
-        stat={<Remoters />}
-      />
+    <React.Fragment>
+      <div className="row mb-5">
+        <div className="col-12 text-center">
+          <a onClick={changeOrganization} class="main-font">Change Organization</a>
+        </div>
+      </div>
 
-      <Panels4lg
-        title={"Hourly Rates"}
-        stat={<HourlyRates />}
-      />
+      <div className="row mt-3">
+        <Panels4lg
+        title={"Users in Torre"}
+        stat={<TotalUsers />}
+        />
+        
+        <Panels4lg
+          title={"Remoters"}
+          stat={<Remoters />}
+        />
 
-      <ValidateOrObtainData />
-    </div>
+        <Panels4lg
+          title={"Hourly Rates"}
+          stat={<HourlyRates />}
+        />
+
+        <ValidateOrObtainData />
+      </div>
+    </React.Fragment>
   )
 } 
