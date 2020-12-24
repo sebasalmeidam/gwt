@@ -37,7 +37,6 @@ export default function Dashboard() {
           }
           if (result.results.length > 0) {
             result.results.map(user => {
-              console.log(user.username);
               dispatch({ type: 'getUsersID', payload: user.username })
             })
           }

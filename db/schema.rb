@@ -14,6 +14,9 @@ ActiveRecord::Schema.define(version: 2020_12_23_230900) do
 
   create_table "students", charset: "latin1", force: :cascade do |t|
     t.string "torre_username", default: "", null: false
+    t.string "organization", default: "", null: false
+    t.string "location", default: "", null: false
+    t.string "name", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

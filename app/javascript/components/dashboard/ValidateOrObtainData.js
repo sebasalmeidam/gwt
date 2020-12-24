@@ -6,7 +6,7 @@ export default function ValidateOrObtainData() {
   const { state, dispatch } = useContext(DashboardContext)
 
   const validateUserData = () => {
-    let data = { users: state.usersId }
+    let data = { organization: state.userOrganization , users: state.usersId }
     fetch(`/validate_students`, {
       method: 'POST',
       headers: {
@@ -18,7 +18,10 @@ export default function ValidateOrObtainData() {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result)          
+          if (result.message == "Processing") {
+            dispatch({ type: 'backLoad'})
+          } 
+          dispatch({ type: 'insightsLoaded' })
         },
         (error) => {
           console.log(error)
@@ -32,11 +35,26 @@ export default function ValidateOrObtainData() {
     }
   }, [state.usersId])
   
+  if (state.updatingInsights) {
+    return (
+      <div className="col-12 text-center">
+        We are loading more insights, please wait
+      </div>
+    )
+  } else if (state.backLoading) {
+    return (
+      <div className="col-12 text-center">
+        We are updating information with user profiles, please come back in a couple of minutes.
+      </div>
+    )
+  } 
+
   return (
     <div className="col-12 text-center">
-      We are loading more insights, please wait
+      let the insights begin
     </div>
   )
+  
 }
 
       
