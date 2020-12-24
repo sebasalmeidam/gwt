@@ -1,3 +1,4 @@
 class Organization < ApplicationRecord
-  has_and_belongs_to_many :professionals
+  has_many :organizations_professionals, dependent: :destroy
+  has_many :professionals, through: :organizations_professionals
 end

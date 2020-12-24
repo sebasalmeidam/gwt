@@ -1,6 +1,6 @@
 class Student < ApplicationRecord
 
-  has_many :professionals
+  has_many :professionals, dependent: :destroy
 
   def self.get_genome(usernames)
     p 'starting'
@@ -20,11 +20,28 @@ class Student < ApplicationRecord
           person = res["person"]
           name = person ? person["name"] : ''
           location = person['location'] ? person["location"]['name'] : ''
-          p 'before update'
-          p name
-          p location
-          Student.find_by(torre_username: username).update(name: name, location: location)
+          student = Student.find_by(torre_username: username)
+          student.update(name: name, location: location)
+          p 'jobs'
           jobs = res['jobs']
+          p jobs
+          unless jobs.nil? || jobs.empty?
+            p 'loop'
+            jobs.each do |job|
+              job_name = job['name']
+              start_m = job["fromMonth"] ? job["fromMonth"] : ''
+              start_y = job["fromYear"] ? job["fromYear"] : ''
+              end_m = job["toMonth"] ? job["toMonth"] : ''
+              end_y = job["toYear"] ? job["toYear"] : ''
+              p 'before save'
+              experience = student.professionals.build(title: job_name, start_month: start_m, start_year: start_y, end_month: end_m, end_year: end_y)
+              experience.save
+              p 'after save'
+              job_organizations = job['organizations'].map{|org| org['name']}
+              p job_organizations
+              job_organizations.each{|org| business = Organization.find_or_create_by(name: org); experience.organizations << business}
+            end
+          end
           studies = res["education"]
           p 'next'
           return true
