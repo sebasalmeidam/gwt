@@ -26,6 +26,8 @@ let reducer = (state, action) => {
       return { ...state, backLoading: true }
     case 'insightsLoaded':
       return { ...state, updatingInsights: false }
+    case 'queryFalse':
+      return { ...state, queryValidate: false }
     default:
       return;
   }
@@ -41,7 +43,8 @@ const initialState = {
   rates: [],
   usersId: [],
   updatingInsights: true,
-  backLoading: false
+  backLoading: false,
+  queryValidate: true
 }
 
 const DashboardContext = React.createContext(initialState);

@@ -7,9 +7,9 @@ module Types
     end
     def students(organization:)
       if organization.present?
-        return Student.where(organization: organization).includes(professionals: :organizations)
+        return Student.where(organization: organization)
       end
-      Student.includes(professionals: :organizations)
+      Student.all
     end
 
     field :studentList, StudentType.connection_type, null: false do

@@ -1,18 +1,19 @@
 class StudentsController < ApplicationController
 
   def validate_students
-    @users = params[:users]
+    @users = params[:users].first(100)
     @current_students = Student.where(torre_username: @users )
     
-    if !@current_students.empty?
-      @current_students.update_all(organization: params[:organization])
-    end
-    @new_update = @current_students.where(name: "")
+    # validates that student belong to organization
+    #if !@current_students.empty?
+    #  @current_students.update_all(organization: params[:organization])
+    #end
+    #@new_update = @current_students.where(name: "")
     
     @current_students = @current_students.map(&:torre_username)
     @students = @users - @current_students
 
-    @new_students = @students.map{|user| {torre_username: user, organization: params[:organization], created_at: DateTime.now, updated_at: DateTime.now}}
+    @new_students = @students.first(100).map{|user| {torre_username: user, organization: params[:organization], created_at: DateTime.now, updated_at: DateTime.now}}
     unless @new_students.empty?
       @new_students.in_groups_of(50, false) do |group|
         Student.insert_all(group)

@@ -12,7 +12,7 @@ const GET_STUDENTS = gql`
     }
   `;
 
-export default function IsWorking() {
+export default function IsWorking({organization}) {
   const { state } = useContext(DashboardContext)
   const { loading, error, data } = useQuery(GET_STUDENTS, {
     variables: { "name": state.userOrganization }
@@ -22,6 +22,7 @@ export default function IsWorking() {
   if (error) return `Error! ${error.message}`;
 
   const values = [{ name: 'Yes', Total: data.isWorking }, { name: 'No', Total: data.notWorking }];
+  console.log(values)
   return(
     <div style={{ width: '100%', height: 130 }}>
       <ResponsiveContainer width="100%" height="100%" >

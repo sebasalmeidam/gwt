@@ -42,7 +42,6 @@ export default function StudentsList() {
         maxH={"200px"}
         show={show}
         entries={data.studentList || []}
-        hasNextPage={data.studentList.pageInfo.hasNextPage}
       />
     </div>
   )

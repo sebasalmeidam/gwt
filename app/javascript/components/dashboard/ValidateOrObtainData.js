@@ -18,8 +18,11 @@ export default function ValidateOrObtainData() {
       .then(res => res.json())
       .then(
         (result) => {
+          console.log('what')
+          dispatch({ type: 'queryFalse' })          
           if (result.message == "Processing") {
             dispatch({ type: 'backLoad'})
+            dispatch({ type: 'insightsLoaded' })
           } 
           dispatch({ type: 'insightsLoaded' })
         },
@@ -30,10 +33,10 @@ export default function ValidateOrObtainData() {
   }
 
   useEffect(() => {
-    if (state.usersId.length > 0 && state.userOrganization != '') {
+    if (state.queryValidate) {
       validateUserData()
     }
-  }, [state.usersId, state.userOrganization])
+  }, [state.queryValidate])
   
   if (state.updatingInsights) {
     return (

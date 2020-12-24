@@ -71,12 +71,21 @@ export default function Dashboard() {
       }
     })
   }
+
+  const displayInsights = () => {
+    if (state.usersId.length == 0) {
+      return(
+        <div className="row"><div className="col-12 text-center">Loading</div></div>
+      )
+    }
+    return <ValidateOrObtainData />
+  }
   
   return (
     <React.Fragment>
       <div className="row mb-5">
         <div className="col-12 text-center">
-          <a onClick={changeOrganization} class="main-font">Change Organization</a>
+          <a onClick={changeOrganization} className="main-font">Change Organization</a>
         </div>
       </div>
 
@@ -95,8 +104,8 @@ export default function Dashboard() {
           title={"Hourly Rates"}
           stat={<HourlyRates />}
         />
-
-        <ValidateOrObtainData />
+        
+        {displayInsights()}
       </div>
     </React.Fragment>
   )

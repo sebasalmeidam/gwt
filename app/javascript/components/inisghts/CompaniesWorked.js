@@ -1,4 +1,4 @@
-import React, { useContext} from 'react';
+import React, { useContext, useEffect} from 'react';
 import { DashboardContext } from '../context/DashboardContext'
 import { gql, useQuery } from '@apollo/client';
 import {
@@ -20,6 +20,8 @@ export default function CompaniesWorked() {
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
 
+  
+  
   let values = data.companyList.reduce((count, word) => {
     count[word] = (count[word] || 0) + 1;
     return count
@@ -32,7 +34,8 @@ export default function CompaniesWorked() {
       val.push(i)
     })
   }
-  console.log(val)
+  
+  
   return(
     <div style={{ width: '100%', height: 130 }}>
       <ResponsiveContainer width="100%" height="85%" >

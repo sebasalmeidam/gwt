@@ -1,17 +1,13 @@
 import React, { useContext } from "react";
 import InfiniteScroll from 'react-infinite-scroller';
 
-export default function DisplayStudents({ entries, hasNextPage, show, maxH }){
+export default function DisplayStudents({ entries, show, maxH }){
   const defMaxHeight = (altura) => {
     if (altura) {
       return maxH
     } else {
       return "180px"
     }
-  }
-
-  const not_load = () => {
-    return false
   }
 
   return (
@@ -21,16 +17,6 @@ export default function DisplayStudents({ entries, hasNextPage, show, maxH }){
           <h4 className="h4-responsive lighter-font text-center">Some of your Students</h4>
         </div>
         <div className="card-body">
-          {show &&
-            <InfiniteScroll
-              pageStart={0}
-              loader={<div key="loader1">Loading..</div>}
-              element="div"
-              threshold={100}
-              useWindow={false}
-              loadMore={not_load}
-            // getScrollParent={()=> this.scrollParentRef}
-            >
               {
                 entries.edges.map((student) => {
                   return (
@@ -40,10 +26,7 @@ export default function DisplayStudents({ entries, hasNextPage, show, maxH }){
                     </a>
                     </div>
                   )
-                })
-              }
-
-            </InfiniteScroll>
+              })
           }
           {!show && <div>No result, please contact us!</div>}
         </div>
