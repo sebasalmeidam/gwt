@@ -13,6 +13,11 @@
 ### Pending:
 * Create model for extra information about users
 * Translations
-* remove tostr when sign in/out
+* ADMIN section, to CRUD users
+* framework implementation to hablde background jobs
+* Compare against competitors
 
 ### Ideas to keep growing:
+* Recommend users directly from platform
+* Network with Educators
+* Network between Educators and Companies
