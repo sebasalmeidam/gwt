@@ -21,11 +21,11 @@ class StudentsController < ApplicationController
       render json: {status: 200, message: 'Processing'} and return
     end
 
-    
-    unless @new_update.empty?
-      system "rake get_users_genome USERNAMES=#{@new_update.map(&:torre_username).join(',')} &"
-      render json: {status: 200, message: 'Processing'} and return
-    end
+    # validate update users when endpoint call fail the first time
+    #unless @new_update.empty?
+    #  system "rake get_users_genome USERNAMES=#{@new_update.map(&:torre_username).join(',')} &"
+    #  render json: {status: 200, message: 'Processing'} and return
+    #end
     render json: {status: 200, message: 'Updated'} and return
   end
 end

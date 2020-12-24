@@ -30,10 +30,10 @@ export default function ValidateOrObtainData() {
   }
 
   useEffect(() => {
-    if (state.usersId.length > 0) {
+    if (state.usersId.length > 0 && state.userOrganization != '') {
       validateUserData()
     }
-  }, [state.usersId])
+  }, [state.usersId, state.userOrganization])
   
   if (state.updatingInsights) {
     return (
